@@ -1,0 +1,54 @@
+body {
+    -moz-appearance: none;
+    -webkit-apperance: none;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family:Arial, Helvetica, sans-serif;
+    flex-direction: row;
+}
+
+.grid {
+    height: 500px;
+    width: 500px;
+    margin: 20px 20px;
+}
+
+.grid div {
+    background-color:rgb(197, 197, 197);
+    float: left;
+}
+
+button {
+    display: block;
+    border-radius: 3px;
+    background-color: rgb(216, 216, 216);
+    border: 2px solid rgb(177, 177, 177);
+    font-size: 16px;
+    height: 2em;
+    width: 6em;
+    color: black;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.menu {
+    padding: 10px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
+    color: black;
+    margin: 20px 40px;
+}

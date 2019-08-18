@@ -3,28 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <title>Etch-A-Sketch</title>
-        <style>
-            .wrapper div {
-                height: 20px;
-                width: 20px;
-                border: 5px solid gold;
-                background-color:deepskyblue;
-                float: left;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div class="wrapper"></div>
-        <script>
-            var wrapper = document.querySelector(".wrapper");
-            
-            for (let i=0; i<16; i++) {
-                for (let j=0; j<16; j++) {
-                    var div = document.createElement("div");
-                    if (j==0) div.style.clear = "both";
-                    wrapper.appendChild(div);
-                }
-            }
-        </script>
+        <div class="menu">
+            <form>
+                <div>
+                    <input type="radio" id="bw" name="mode" value="black-and-white">
+                    <label for="bw">black</label>
+                </div>
+                <div>
+                    <input type="radio" id="rb" name="mode" value="rainbow">
+                    <label for="rb">rainbow</label>
+                </div>
+                <div>
+                    <input type="radio" id="pp" name="mode" value="purple" checked="checked">
+                    <label for="pp">purple</label>
+                </div>
+                <input type="number" min="1" max="128" placeholder="64">
+            </form>
+            <button type="submit">RESET</button>             
+        </div>
+        <div class="grid"></div>
+        <script src="etch-a-sketch.js"></script>
     </body>
 </html>
