@@ -7,7 +7,6 @@ let initGridSize = 16;
 let greyVal = 197;
 let colorSquare = (square) => colorSquarePurple(square);
 
-
 function calculateSquareSize(size) {
     return 1/size*100;
 }
@@ -88,5 +87,5 @@ inputs.forEach((input) => {
             counter = 0;
             break;
         }
-    })
+    });
 });
