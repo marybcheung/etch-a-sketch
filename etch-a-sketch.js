@@ -17,8 +17,8 @@ function colorSquarePurple(square) {
 
 function colorSquareBlack(square) {
     let colorVal = square.getAttribute("shade");
-    square.style.backgroundColor = "rgb("+colorVal+","+colorVal+","+colorVal+")";
-    if (colorVal > 0) square.setAttribute("shade", String(+colorVal-36));
+    square.style.backgroundColor = "rgb("+colorVal+"%,"+colorVal+"%,"+colorVal+"%)";
+    if (colorVal > 0) square.setAttribute("shade", String(+colorVal-10));
 }
 
 function randomRGB() {
@@ -46,7 +46,7 @@ function makeGrid(gridSize) {
             if (j==0) div.style.clear = "both";
             div.style.height = squareSize + "%";
             div.style.width = squareSize + "%";
-            div.setAttribute("shade", "360");
+            div.setAttribute("shade", "100");
             grid.appendChild(div);
         }
     }
