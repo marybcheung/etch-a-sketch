@@ -1,18 +1,40 @@
 //returns squareSize as a percentage of the gridSize
 let grid = document.querySelector(".grid");
 let reset = document.querySelector("button");
-let form = document.querySelector("form");
-const initGridSize = 64;
+let field = document.querySelector("#size");
+let inputs = document.querySelectorAll("input[type=radio]");
+let initGridSize = 16;
+let greyVal = 197;
+let colorSquare = (square) => colorSquarePurple(square);
+
 
 function calculateSquareSize(size) {
     return 1/size*100;
+}
+
+function colorSquarePurple(square) {
+    square.style.backgroundColor = "blueviolet";
+}
+
+function colorSquareBlack(square) {
+    let colorVal = square.getAttribute("shade");
+    square.style.backgroundColor = "rgb("+colorVal+","+colorVal+","+colorVal+")";
+    if (colorVal > 0) square.setAttribute("shade", String(+colorVal-36));
+}
+
+function randomRGB() {
+    return Math.floor(Math.random()*360);
+}
+
+function colorSquareRainbow(square) {
+    square.style.backgroundColor = "rgb("+randomRGB()+","+randomRGB()+","+randomRGB()+")";
 }
 
 function bindEventsToSquares() {
     let squares = document.querySelectorAll(".grid div");
     squares.forEach((square) => 
         square.addEventListener("mouseenter", () => {
-            square.style.backgroundColor = "blueviolet";
+            colorSquare(square);
         }
     ));
 }
@@ -25,6 +47,7 @@ function makeGrid(gridSize) {
             if (j==0) div.style.clear = "both";
             div.style.height = squareSize + "%";
             div.style.width = squareSize + "%";
+            div.setAttribute("shade", "360");
             grid.appendChild(div);
         }
     }
@@ -40,28 +63,30 @@ function removeGrid() {
 
 makeGrid(initGridSize);
 
- function getRadioVal() {
-     let inputs = document.querySelectorAll("input[type=radio]");
-     for (let i=0; i<inputs.length; i++){
-         if (inputs[i].checked == true) return inputs[i].value;
-     }
- }
-
 reset.addEventListener("click", () => {
-    const squares = parseInt(prompt("How many squares per side?"));
-    if (isNaN(squares) || squares <= 0){
-        alert("That's not a valid number. Please try again.");
+    const squares = prompt("How many squares would you like per side?");
+    if (isNaN(squares) || squares <= 0 || squares > 128){
+        alert("Please enter a number between 1 and 128 inclusive.");
         return;
     }
     removeGrid();
     makeGrid(squares);
-    let link = document.querySelector("link");
-    switch(getRadioVal()) {
-        case "purple": link.href = "style.css";
-        break;
-        case "black-and-white": link.href = "style2.css";
-        break;
-        case "rainbow": link.href = "style3.css";
-        break
-    }
 }); 
+
+inputs.forEach((input) => {
+    let link = document.querySelector("link");
+    input.addEventListener("click", () => {
+        switch (input.value) {
+        case "purple": link.href = "styles\\purple.css";
+            colorSquare = colorSquarePurple;
+            break;
+        case "black-and-white": link.href = "styles\\bw.css";
+            colorSquare = colorSquareBlack;
+            break;
+        case "rainbow": link.href = "styles\\rainbow.css";
+            colorSquare = colorSquareRainbow;
+            counter = 0;
+            break;
+        }
+    })
+});
