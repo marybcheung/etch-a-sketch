@@ -4,7 +4,6 @@ let reset = document.querySelector("button");
 let field = document.querySelector("#size");
 let inputs = document.querySelectorAll("input[type=radio]");
 let initGridSize = 16;
-let greyVal = 197;
 let colorSquare = (square) => colorSquarePurple(square);
 
 function calculateSquareSize(size) {
